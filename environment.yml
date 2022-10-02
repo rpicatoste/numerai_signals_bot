@@ -1,0 +1,8 @@
+name: nsb
+channels:
+  - defaults
+dependencies:
+  - python=3.10.4
+  - pip
+  - pip:
+    - pip-tools

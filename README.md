@@ -1,1 +1,10 @@
 # numerai_signals_bot
+
+Initial code based on the example provided in https://signals.numer.ai/tournament -> download example.
+
+Steps:
+
+1. Run `make all` to create the conda environment and install the dependencies.
+2. Run `./api/run_all.sh` to download the data and run the example.
+
+Alternatively run and explore in the notebook `notebooks/run_all.ipynb`.

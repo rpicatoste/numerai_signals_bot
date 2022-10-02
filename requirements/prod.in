@@ -1,0 +1,9 @@
+numerapi==2.3.8
+#git+https://github.com/leonhma/yfinance.git
+yfinance
+simplejson
+matplotlib
+sklearn
+xgboost
+opensignals
+pandas>=1.3.0, <1.4.0
