@@ -1,5 +1,7 @@
 # numerai_signals_bot
 
+## Starting point
+
 Initial code based on the example provided in https://signals.numer.ai/tournament -> download example.
 
 Steps:
@@ -8,3 +10,7 @@ Steps:
 2. Run `./api/run_all.sh` to download the data and run the example.
 
 Alternatively run and explore in the notebook `notebooks/run_all.ipynb`.
+
+## Proposed architecture and workflow
+
+![Image](docs/schemes.drawio.png)
