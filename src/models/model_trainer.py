@@ -2,8 +2,11 @@
 This module contains the ModelTrainer class, which is used to train a model.
 """
 from pathlib import Path
+from typing import Union
 import pandas as pd
 from xgboost import XGBRegressor
+
+from ..features.feature_generator import FeatureGenerator
 
 
 TARGET_NAME = 'target_20d'
@@ -11,39 +14,37 @@ PREDICTION_NAME = 'signal'
 
 class ModelTrainer:
 
-    def __init__(self):
-        pass
+    def __init__(self, features_cfg_path: Union[Path, str]):
+        self.feat_gen = FeatureGenerator(features_cfg_path)
 
-    def load_data(self, data_folder):
-        """Creates example_signal_yahoo.csv to upload for validation and live data submission"""
-
+    def load_data(self):
         print('Reading data')
-        data_folder = Path(data_folder)
-        self.train = pd.read_csv('example_training_data_yahoo.csv')
-        self.tournament = pd.read_csv('example_tournament_data_yahoo.csv')
+        self.feat_gen.load_features()
+        train = self.feat_gen.train
+        tournament = self.feat_gen.tournament
 
-        self.feature_names = self.train.filter(like='feature_').columns.to_list()
+        self.feature_names = train.filter(like='feature_').columns.to_list()
 
-        assert len(self.train) > 0, 'Training data is empty'
-        assert len(self.tournament) > 0, 'Tournament data is empty'
+        assert len(train) > 0, 'Training data is empty'
+        assert len(tournament) > 0, 'Tournament data is empty'
 
     def train_model(self):
         print('Training model')
         self.model = XGBRegressor(tree_method='gpu_hist')
-        self.model.fit(self.train[self.feature_names], 
-                       self.train[TARGET_NAME])
+        self.model.fit(self.feat_gen.train[self.feature_names], 
+                       self.feat_gen.train[TARGET_NAME])
 
     def predict(self, output_dir=None):
         # predict test and live data
         print('Predicting test and live data')
 
         # drop rows where target or features are null
-        self.tournament = self.tournament.dropna(subset=self.feature_names)
-        self.tournament[PREDICTION_NAME] = self.model.predict(self.tournament[self.feature_names])
+        self.feat_gen.tournament = self.feat_gen.tournament.dropna(subset=self.feature_names)
+        self.feat_gen.tournament[PREDICTION_NAME] = self.model.predict(self.feat_gen.tournament[self.feature_names])
 
         # prepare and writeout example file
         print('Writing signal upload file')
-        diagnostic_df = self.tournament.copy()
+        diagnostic_df = self.feat_gen.tournament.copy()
         diagnostic_df['data_type'] = diagnostic_df.data_type.fillna('live')
 
         example_signal_output_path = 'example_signal_upload.csv'
