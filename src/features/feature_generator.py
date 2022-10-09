@@ -5,18 +5,18 @@ from opensignals.features import RSI, SMA
 import pandas as pd
 from opensignals.data.yahoo import Yahoo
 
-from ..data.database_configuration import DataBaseConfiguration
-from ..features.features_configuration import FeaturesConfiguration
+from data.database_configuration import DataBaseConfiguration
+from features.features_configuration import FeaturesConfiguration
 
 
 class FeatureGenerator:
 
     def __init__(self, 
-                 features_cfg_path: Union[Path, str],
-                 db_cfg_path: Union[Path, str]=None):
+                 db_cfg_path: Union[Path, str],
+                 features_cfg_path: Union[Path, str]=None):
 
-        if db_cfg_path is None:
-            db_cfg_path = features_cfg_path
+        if features_cfg_path is None:
+            features_cfg_path = db_cfg_path
 
         self.db_cfg = DataBaseConfiguration(db_cfg_path)
         self.feat_cfg = FeaturesConfiguration(features_cfg_path)

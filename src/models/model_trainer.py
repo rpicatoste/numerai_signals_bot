@@ -6,7 +6,7 @@ from typing import Union
 import pandas as pd
 from xgboost import XGBRegressor
 
-from ..features.feature_generator import FeatureGenerator
+from features.feature_generator import FeatureGenerator
 
 
 TARGET_NAME = 'target_20d'

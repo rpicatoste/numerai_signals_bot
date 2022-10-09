@@ -15,13 +15,9 @@ class DataBaseGenerator:
 
     def create_initial_database(self):
         yahoo = Yahoo()
+        self.cfg.db_dir.mkdir(exist_ok=True, parents=True)
         yahoo.download_data(self.cfg.db_dir)
         print('Done')
 
     def update_database(self):
         pass
-
-
-if __name__ == "__main__":
-    db_gen = DataBaseGenerator()
-    db_gen.create_initial_database()
