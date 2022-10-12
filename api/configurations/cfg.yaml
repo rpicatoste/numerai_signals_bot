@@ -1,5 +1,5 @@
 database:
-  db_dir: '/home/pica/hdd/nas/Data/numerai_signals/raw_data'
+  db_dir: '/Users/servandodavidtorresgarcia/Servando/fsdl/raw_data'
 
 features:
-  features_dir: '/home/pica/hdd/nas/Data/numerai_signals/features'
+  features_dir: '/Users/servandodavidtorresgarcia/Servando/fsdl/features'
