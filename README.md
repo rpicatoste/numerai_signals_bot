@@ -16,6 +16,11 @@ Steps:
 
 Alternatively run and explore in the notebook `notebooks/run_all.ipynb`.
 
+## For pull-request
+
+Please enforce the following steps before submitting a pull-request:
+`pre-commit run --all-files`
+
 ## Proposed architecture and workflow
 
 ![Image](docs/schemes.drawio.png)
