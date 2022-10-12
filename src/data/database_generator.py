@@ -10,8 +10,7 @@ class DataBaseGenerator:
     Class to manage the database.
     It will connect to the sources and get the data. Then it will store it in a database.
     """
-    def __init__(self, 
-    db_cfg_path: Union[Path, str]):
+    def __init__(self, db_cfg_path: Union[Path, str]):
         self.cfg = DataBaseConfiguration(db_cfg_path)
 
     def create_initial_database(self):

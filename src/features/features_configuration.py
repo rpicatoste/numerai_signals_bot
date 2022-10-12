@@ -4,8 +4,7 @@ import yaml
 
 
 class FeaturesConfiguration:
-    def __init__(self, 
-    cfg_path: Union[Path, str]):
+    def __init__(self, cfg_path: Union[Path, str]):
         self.cfg_path = cfg_path
 
         with open(self.cfg_path, 'r') as file:
