@@ -1,6 +1,7 @@
 example_*.csv
 db/*
 requirements/*.txt
+*_no_git*
 
 # Created by https://www.toptal.com/developers/gitignore/api/pycharm,visualstudiocode,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,visualstudiocode,python
