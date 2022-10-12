@@ -1,0 +1,24 @@
+
+
+repos:
+  # a set of useful Python-based pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      # list of definitions and supported hooks: https://pre-commit.com/hooks.html
+      - id: trailing-whitespace      # removes any whitespace at the ends of lines
+      - id: check-yaml               # check yaml syntax by loading all yaml files
+
+
+  # black python autoformatting
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+    # additional configuration of black in pyproject.toml
+
+  # flake8 python linter with all the fixins
+  - repo: https://github.com/PyCQA/flake8
+    rev: 3.9.2
+    hooks:
+      - id: flake8
